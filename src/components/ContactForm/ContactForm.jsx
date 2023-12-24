@@ -18,7 +18,11 @@ const ContactForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(formValues);
+    const lowerCaseFormValues = {
+      name: formValues.name.toLowerCase(),
+      number: formValues.number.toLowerCase(),
+    };
+    onSubmit(lowerCaseFormValues);
     reset();
   };
 

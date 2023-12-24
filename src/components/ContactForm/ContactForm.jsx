@@ -19,8 +19,8 @@ const ContactForm = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const lowerCaseFormValues = {
-      name: formValues.name.toLowerCase(),
-      number: formValues.number.toLowerCase(),
+      name: formValues.name,
+      number: formValues.number,
     };
     onSubmit(lowerCaseFormValues);
     reset();

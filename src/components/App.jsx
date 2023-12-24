@@ -15,17 +15,16 @@ export const App = () => {
       ]
   );
   const [filter, setFilter] = useState('');
-
   const addContact = contact => {
     const contactExist = contacts.some(
-      ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
+      ({ name }) => name === contact.name
     );
-
+  
     if (contactExist) {
       alert(`${contact.name} is already in the contacts!`);
       return;
     }
-
+  
     setContacts(prev => {
       const updatedContacts = [{ id: nanoid(), ...contact }, ...prev];
       console.log('Contacts after adding:', updatedContacts);
@@ -38,8 +37,9 @@ export const App = () => {
   };
 
   const showFilteredContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter)
+      contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
 
